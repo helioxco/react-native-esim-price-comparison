@@ -1,5 +1,14 @@
 {
-  "name": "my-app",
+  "name": "react-native-esim-price-comparison",
+  "description": "React Native Expo app to browse and compare eSIM data plans across 100+ countries",
+  "keywords": [
+    "react-native",
+    "esim",
+    "esim-price-comparison",
+    "expo",
+    "mobile-data-plans",
+    "travel-esim"
+  ],
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
