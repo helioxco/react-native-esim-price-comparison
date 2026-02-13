@@ -1,67 +1,106 @@
-# Welcome to your Expo app 👋
+# React Native eSIM Price Comparison App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A cross-platform mobile application built with **React Native** and **Expo** that lets users browse, compare, and select **eSIM data plans** across **100+ countries**. Compare eSIM prices by country, data size, and validity period — all in one place.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Country selector** with flag icons for 100+ countries
+- **Data plan comparison** — filter by size (500 MB to 10 TB) and validity (1–30 days)
+- **Real-time price display** in USD
+- **Device compatibility checker**
+- **Dark mode** support (automatic)
+- Cross-platform: **iOS**, **Android**, and **Web**
 
-   ```bash
-   npm install
-   ```
+## Screenshots
 
-2. Start the app
+<!-- Add your screenshots here -->
 
-   ```bash
-   npx expo start
-   ```
+## Tech Stack
 
-In the output, you'll find options to open the app in a
+| Technology | Purpose |
+|---|---|
+| [React Native](https://reactnative.dev/) | Cross-platform mobile framework |
+| [Expo](https://expo.dev/) (SDK 54) | Managed workflow, OTA updates |
+| [Expo Router](https://docs.expo.dev/router/introduction/) | File-based routing & navigation |
+| [TypeScript](https://www.typescriptlang.org/) | Type-safe development |
+| [react-native-element-dropdown](https://github.com/hoaphantn7604/react-native-element-dropdown) | Searchable country dropdown |
+| [react-native-ico-flags](https://github.com/nicholasbraun/react-native-ico-flags) | Native country flag icons |
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Getting Started
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Prerequisites
 
-## Get a fresh project
+- [Node.js](https://nodejs.org/) (LTS)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
 
-When you're ready, run:
+### Installation
 
 ```bash
-npm run reset-project
+git clone https://github.com/helioxco/react-native-esim-price-comparison.git
+cd react-native-esim-price-comparison
+npm install
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Run the App
 
-## Learn more
+```bash
+npx expo start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+Then open the app on:
+- [Expo Go](https://expo.dev/go) (scan QR code)
+- [iOS Simulator](https://docs.expo.dev/workflow/ios-simulator/)
+- [Android Emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
+- [Development build](https://docs.expo.dev/develop/development-builds/introduction/)
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Project Structure
+
+```
+app/
+  (tabs)/
+    index.tsx           # Main eSIM plan selector screen
+    explore.tsx         # Info screen
+    _layout.tsx         # Tab navigation layout
+components/
+  parallax-scroll-view.tsx
+  themed-text.tsx
+  themed-view.tsx
+  ui/
+    icon-symbol.tsx     # Tab bar icons (Expo Vector Icons)
+constants/
+  data.json             # eSIM pricing data (100+ countries)
+  theme.ts              # Design tokens
+hooks/
+  use-color-scheme.ts
+  use-theme-color.ts
+```
 
 ## FAQ
 
-### Why do I choose Expo rather than React Native CLI?
-Expo’s managed workflow lets me push OTA updates without waiting on app store reviews, so bug fixes and content tweaks reach users immediately. Combined with instant device testing through Expo Go, I can iterate far faster than wiring up native builds in Xcode or Android Studio every time I tweak the UI.
+### Why Expo instead of React Native CLI?
 
-### You get the data from JSON. Why do I choose JSON rather than XLSX to display data?
-JSON is lightweight, human-readable, and natively supported in JavaScript, so I can import it directly without extra parsing libraries. XLSX would require heavier dependencies, manual schema conversions, and can bloat the bundle, whereas JSON keeps the data source simple and diff-friendly in git.
+Expo's managed workflow enables OTA (over-the-air) updates without app store reviews, so bug fixes and content changes reach users immediately. Combined with instant device testing through Expo Go, the development cycle is significantly faster than configuring native builds in Xcode or Android Studio.
 
-### Why do I choose `react-native-element-dropdown`?
-`react-native-element-dropdown` offers ready-made dropdown UX that matches native expectations, supports search/multi-select out of the box, and plays nicely with Expo. Its TypeScript types and theming hooks reduce custom boilerplate and keep the UI consistent across screens.
+### Why JSON instead of XLSX for pricing data?
 
-### Why do I choose `react-native-ico-flags` instead of https://flagicons.lipis.dev/?
-The Lipis flag icons are optimized for web projects that expect HTML, CSS classes, and remote asset loading, so I’d need a WebView or custom asset pipeline to make them work natively—adding extra weight and latency, especially offline. `react-native-ico-flags` already exposes each flag as a React Native component, slots into the Expo bundle, and keeps rendering purely native, so it’s both simpler to integrate and more reliable in production.
+JSON is lightweight, human-readable, and natively supported in JavaScript — it can be imported directly without parsing libraries. XLSX would add heavier dependencies, require schema conversions, and bloat the bundle. JSON also stays clean and diff-friendly in version control.
 
-### Why do I use Expo Vector Icons?
-I import Expo Vector Icons inside `components/ui/icon-symbol.tsx` to render the tab bar symbols in `app/(tabs)/_layout.tsx`. They ship with the Expo SDK, so the icons are already linked, render crisply across platforms, and let me swap in Material or SF Symbols mappings without juggling extra native dependencies.
+### Why `react-native-element-dropdown`?
 
-## Join the community
+It provides a production-ready dropdown component with search and multi-select support out of the box. It integrates seamlessly with Expo, offers TypeScript types, and supports theming — reducing boilerplate while keeping the UI consistent.
 
-Join our community of developers creating universal apps.
+### Why `react-native-ico-flags` instead of web-based flag libraries?
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Web-oriented flag libraries (like Lipis flag icons) rely on HTML, CSS classes, and remote asset loading, requiring a WebView or custom asset pipeline in React Native. `react-native-ico-flags` exposes each flag as a native React Native component that bundles with the app and works reliably offline.
+
+### Why Expo Vector Icons?
+
+Expo Vector Icons ship with the Expo SDK — no additional native linking needed. They render crisply across platforms and support Material Icons and SF Symbols mappings, making it easy to match platform conventions.
+
+## License
+
+This project is for educational and portfolio purposes.
+
+## Keywords
+
+react native, esim, esim price comparison, esim data plans, esim pricing app, mobile data plans, international esim, travel esim, expo app, react native expo, esim selector, compare esim prices, esim plans by country
